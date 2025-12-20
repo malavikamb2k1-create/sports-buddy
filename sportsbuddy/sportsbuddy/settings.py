@@ -11,14 +11,14 @@ SECRET_KEY = os.environ.get(
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    "sports-buddy-2.onrender.com",
+    "sports-buddy-3.onrender.com",
     ".onrender.com",
     "localhost",
     "127.0.0.1",
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://sports-buddy-2.onrender.com",
+    "https://sports-buddy-3.onrender.com",
 ]
 
 INSTALLED_APPS = [
