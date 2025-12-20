@@ -1,1 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Add Event - SportsBuddy{% endblock %}
+
+{% block content %}
+<h1 class="page-title">Add a New Sports Event</h1>
+
+<form method="POST" class="form-box">
+    <label>Event Name</label>
+    <input type="text" name="name" required>
+
+    <label>Sport</label>
+    <input type="text" name="sport" required>
+
+    <label>Date</label>
+    <input type="date" name="date" required>
+
+    <label>Location</label>
+    <input type="text" name="location" required>
+
+    <button type="submit" class="btn-primary">Add Event</button>
+</form>
+{% endblock %}
 
