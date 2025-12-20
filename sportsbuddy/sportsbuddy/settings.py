@@ -8,17 +8,17 @@ SECRET_KEY = os.environ.get(
     "django-insecure-temp-key"
 )
 
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
-    "sports-buddy-3.onrender.com",
+    "sports-buddy-4.onrender.com",
     ".onrender.com",
     "localhost",
     "127.0.0.1",
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://sports-buddy-3.onrender.com",
+    "https://sports-buddy-4.onrender.com",
 ]
 
 INSTALLED_APPS = [
