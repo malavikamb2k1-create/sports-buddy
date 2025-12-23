@@ -5,6 +5,8 @@
 <h1 class="page-title">Add a New Sports Event</h1>
 
 <form method="POST" class="form-box">
+    {% csrf_token %}
+
     <label>Event Name</label>
     <input type="text" name="name" required>
 
@@ -20,4 +22,3 @@
     <button type="submit" class="btn-primary">Add Event</button>
 </form>
 {% endblock %}
-
