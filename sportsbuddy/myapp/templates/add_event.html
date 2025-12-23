@@ -1,48 +1,61 @@
 {% extends "base.html" %}
-{% block title %}Add Event - SportsBuddy{% endblock %}
+{% block title %}Add Event{% endblock %}
 
 {% block content %}
-<h1 class="page-title">Add a New Sports Event</h1>
+<h2>Add Event</h2>
 
-<form method="POST" class="form-box">
+<form method="POST">
     {% csrf_token %}
 
+    <!-- CATEGORY -->
     <label>Category</label>
     <select name="category" required>
         <option value="">Select category</option>
         {% for category in categories %}
-            <option value="{{ category.id }}">{{ category.name }}</option>
+            <option value="{{ category.id }}">
+                {{ category.name }}
+            </option>
         {% endfor %}
     </select>
 
+    <!-- TITLE -->
     <label>Title</label>
     <input type="text" name="title" required>
 
+    <!-- DESCRIPTION -->
     <label>Description</label>
     <textarea name="description" required></textarea>
 
+    <!-- DATE -->
     <label>Date</label>
     <input type="date" name="date" required>
 
+    <!-- TIME -->
     <label>Time</label>
     <input type="time" name="time" required>
 
+    <!-- CITY -->
     <label>City</label>
     <select name="city" required>
         <option value="">Select city</option>
         {% for city in cities %}
-            <option value="{{ city.id }}">{{ city.name }}</option>
+            <option value="{{ city.id }}">
+                {{ city.name }}
+            </option>
         {% endfor %}
     </select>
 
+    <!-- AREA -->
     <label>Area</label>
     <select name="area" required>
         <option value="">Select area</option>
         {% for area in areas %}
-            <option value="{{ area.id }}">{{ area.name }}</option>
+            <option value="{{ area.id }}">
+                {{ area.name }}
+            </option>
         {% endfor %}
     </select>
 
-    <button type="submit" class="btn-primary">Add Event</button>
+    <button type="submit">Add Event</button>
 </form>
 {% endblock %}
