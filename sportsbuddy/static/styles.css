@@ -1,73 +1,85 @@
-/* ---- Global Reset ---- */
+/* ==============================
+   Global Reset
+================================ */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Segoe UI", Roboto, sans-serif;
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
 }
 
 body {
-    background: #f5f7fa;
+    background: #f4f6fb;
     color: #333;
+    min-height: 100vh;
 }
 
-/* ---- Navbar ---- */
+/* ==============================
+   Navbar
+================================ */
 .navbar {
     background: #0a74da;
     color: white;
-    padding: 15px 40px;
+    padding: 16px 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
 .navbar .logo {
-    font-size: 1.7rem;
+    font-size: 1.8rem;
     font-weight: 700;
 }
 
 .navbar nav a {
-    margin-left: 20px;
+    margin-left: 22px;
     text-decoration: none;
     color: white;
     font-weight: 500;
 }
 
 .navbar nav a:hover {
-    opacity: 0.8;
+    opacity: 0.85;
 }
 
-/* ---- Page Layout ---- */
+/* ==============================
+   Page Layout
+================================ */
 .content {
-    max-width: 900px;
-    margin: 40px auto;
+    max-width: 1000px;
+    margin: 50px auto;
     padding: 0 20px;
 }
 
 .page-title {
-    font-size: 2rem;
-    margin-bottom: 25px;
+    font-size: 2.2rem;
+    margin-bottom: 30px;
     font-weight: 700;
+    text-align: center;
+    color: #0a74da;
 }
 
-/* ---- Cards ---- */
+/* ==============================
+   Cards (Home Page)
+================================ */
 .event-list {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 20px;
+    gap: 25px;
 }
 
 .event-card {
     background: white;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    transition: transform 0.15s ease;
+    padding: 22px;
+    border-radius: 14px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .event-card:hover {
-    transform: translateY(-4px);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 22px rgba(0,0,0,0.12);
 }
 
 .event-card h2 {
@@ -75,53 +87,114 @@ body {
     color: #0a74da;
 }
 
-/* ---- Forms ---- */
+/* ==============================
+   Forms (Add Event / Login)
+================================ */
 .form-box {
     background: white;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    max-width: 450px;
+    padding: 35px;
+    border-radius: 16px;
+    box-shadow: 0 8px 22px rgba(0,0,0,0.12);
+    max-width: 500px;
     margin: auto;
 }
 
 .form-box label {
-    margin: 10px 0 5px;
+    margin: 14px 0 6px;
     display: block;
     font-weight: 600;
+    font-size: 0.95rem;
 }
 
-.form-box input {
+/* Inputs, Selects, Textarea */
+.form-box input,
+.form-box select,
+.form-box textarea {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 12px;
+    padding: 12px 14px;
+    margin-bottom: 14px;
     border: 1px solid #ccc;
-    border-radius: 8px;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    background: #fff;
+    transition: border 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* ---- Buttons ---- */
+.form-box textarea {
+    resize: vertical;
+    min-height: 90px;
+}
+
+/* Focus state */
+.form-box input:focus,
+.form-box select:focus,
+.form-box textarea:focus {
+    outline: none;
+    border-color: #0a74da;
+    box-shadow: 0 0 0 3px rgba(10, 116, 218, 0.15);
+}
+
+/* Date & Time inputs */
+.form-box input[type="date"],
+.form-box input[type="time"] {
+    cursor: pointer;
+}
+
+/* ==============================
+   Buttons
+================================ */
 .btn-primary {
-    background: #0a74da;
+    background: linear-gradient(135deg, #0a74da, #095bb3);
     color: white;
-    padding: 12px;
+    padding: 14px;
     width: 100%;
     border: none;
-    border-radius: 8px;
+    border-radius: 10px;
     cursor: pointer;
     font-size: 1rem;
     font-weight: 600;
+    margin-top: 10px;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 .btn-primary:hover {
-    background: #095bb3;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.18);
 }
 
-/* ---- Footer ---- */
+/* ==============================
+   Select Dropdown Arrow Fix
+================================ */
+.form-box select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23999' viewBox='0 0 16 16'%3E%3Cpath d='M1.5 5l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    background-size: 12px;
+    padding-right: 40px;
+}
+
+/* ==============================
+   Messages / Errors (optional)
+================================ */
+.error {
+    background: #ffe1e1;
+    color: #a40000;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+}
+
+/* ==============================
+   Footer
+================================ */
 .footer {
-    margin-top: 60px;
-    padding: 15px;
+    margin-top: 80px;
+    padding: 18px;
     text-align: center;
     font-size: 0.9rem;
     color: #777;
 }
-
