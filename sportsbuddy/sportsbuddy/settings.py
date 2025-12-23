@@ -3,25 +3,32 @@ import os
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get(
     "SECRET_KEY",
     "django-insecure-temp-key"
 )
 
-# Set to False for production
+# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-# UPDATED: Added your PythonAnywhere URL
+# UPDATED: Explicitly trust your PythonAnywhere domain
 ALLOWED_HOSTS = [
     "malavikamb.pythonanywhere.com",
     "localhost",
     "127.0.0.1",
 ]
 
-# UPDATED: Added your PythonAnywhere URL for security
+# UPDATED: Critical for fixing the 403 Forbidden error
+# Note: No trailing slash at the end of the URL
 CSRF_TRUSTED_ORIGINS = [
     "https://malavikamb.pythonanywhere.com",
 ]
+
+# UPDATED: Helps Django understand HTTPS behind PythonAnywhere's proxy
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -35,7 +42,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # Keeps your CSS/JS working
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -75,18 +82,13 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
 
-# --------------------------------------------------
-# Static files (UPDATED FOR PYTHONANYWHERE)
-# --------------------------------------------------
+# Static files configuration
 STATIC_URL = '/static/'
-
-# Changed this to 'static' to match your previous setup
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-
-# REMOVED "Manifest" to prevent the 500 error we saw earlier
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'staticfiles_dev_placeholder'), # Optional: change if you have extra assets
+]
+# Avoid Manifest storage for now to prevent "Missing file" 500 errors
 STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-CSRF_TRUSTED_ORIGINS = [
-    "https://malavikamb.pythonanywhere.com",
-]
