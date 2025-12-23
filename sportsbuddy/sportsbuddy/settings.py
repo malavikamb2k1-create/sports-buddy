@@ -8,17 +8,19 @@ SECRET_KEY = os.environ.get(
     "django-insecure-temp-key"
 )
 
+# Set to False for production
 DEBUG = False
 
+# UPDATED: Added your PythonAnywhere URL
 ALLOWED_HOSTS = [
-    "sports-buddy-6.onrender.com",
-    ".onrender.com",
+    "malavikamb.pythonanywhere.com",
     "localhost",
     "127.0.0.1",
 ]
 
+# UPDATED: Added your PythonAnywhere URL for security
 CSRF_TRUSTED_ORIGINS = [
-    "https://sports-buddy-6.onrender.com",
+    "https://malavikamb.pythonanywhere.com",
 ]
 
 INSTALLED_APPS = [
@@ -73,14 +75,15 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
 
+# --------------------------------------------------
+# Static files (UPDATED FOR PYTHONANYWHERE)
+# --------------------------------------------------
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = [
-    BASE_DIR / 'static',
-]
+# Changed this to 'static' to match your previous setup
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-STATIC_ROOT = BASE_DIR / 'staticfiles'
-
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+# REMOVED "Manifest" to prevent the 500 error we saw earlier
+STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
